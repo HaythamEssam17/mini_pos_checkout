@@ -29,6 +29,10 @@ features/catalog: Product listing and fetching
 
 features/cart: Cart logic and state
 
+flutter pub get
+flutter test
+
+
 features/receipt: Receipt generation
 
 core: Shared models and utils
