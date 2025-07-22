@@ -25,9 +25,11 @@ This project implements the core logic for a minimal Point-of-Sale (POS) system.
 ⚙️ BLoC-based state management
 
 📂 Structure
-features/catalog: Product listing and fetching
+src/catalog: Product listing and fetching
 
-features/cart: Cart logic and state
+src/cart: Cart logic and state
+
+src/receipt.dart To build a receipt 
 
 flutter pub get
 flutter test
