@@ -31,26 +31,3 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     }
   }
 }
-
-// class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
-//   CatalogBloc() : super(CatalogLoading()) {
-//     on<LoadCatalog>(_onLoadCatalog);
-//   }
-//
-//   Future<void> _onLoadCatalog(
-//     LoadCatalog event,
-//     Emitter<CatalogState> emit,
-//   ) async {
-//     try {
-//       emit(CatalogLoading());
-//       final catalogJson = await rootBundle.loadString(
-//         'assets/json/catalog.json',
-//       );
-//       final List<dynamic> decoded = json.decode(catalogJson);
-//       final items = decoded.map((e) => Item.fromJson(e)).toList();
-//       emit(CatalogLoaded(items));
-//     } catch (e) {
-//       emit(CatalogError('Failed to load catalog'));
-//     }
-//   }
-// }
