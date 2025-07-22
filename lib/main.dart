@@ -7,19 +7,16 @@ import 'package:mini_pos_checkout/src/catalog/catalog_loader.dart';
 void main() {
   Bloc.observer = const MultiBlocObserver();
 
-  runApp(MyApp());
+  final catalogLoader = AssetCatalogLoader();
+  final catalogBloc = CatalogBloc(catalogLoader)..add(LoadCatalog());
+
+  runApp(MyApp(catalogBloc: catalogBloc));
 }
 
 class MyApp extends StatelessWidget {
-  late final CatalogLoader catalogLoader;
-  late final CatalogBloc catalogBloc;
+  final CatalogBloc catalogBloc;
 
-  MyApp({super.key}) {
-    catalogLoader = AssetCatalogLoader();
-    catalogBloc = CatalogBloc(catalogLoader);
-    catalogBloc.stream.listen((event) {});
-    catalogBloc.add(LoadCatalog());
-  }
+  const MyApp({super.key, required this.catalogBloc});
 
   @override
   Widget build(BuildContext context) {
