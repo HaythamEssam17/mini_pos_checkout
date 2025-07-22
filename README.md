@@ -1,17 +1,36 @@
-# mini_pos_checkout
+🧾 Mini-POS Checkout Core
+This project implements the core logic for a minimal Point-of-Sale (POS) system. It simulates a simple checkout process with the ability to:
 
-A new Flutter project.
+- Load and display a product catalog
 
-## Getting Started
+- Add and remove items from a cart
 
-This project is a starting point for a Flutter application.
+- Calculate totals and taxes
 
-A few resources to get you started if this is your first Flutter project:
+- Generate a receipt (Receipt Builder)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Follow clean architecture principles using BLoC pattern
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# mini_pos_checkout
+- Include unit tests for key components
+
+✅ Features
+📦 Product catalog with mock data
+
+🛒 Cart functionality (add/remove/update items)
+
+💰 Receipt builder with subtotal, tax, and total
+
+🧪 Unit-tested core logic
+
+⚙️ BLoC-based state management
+
+📂 Structure
+features/catalog: Product listing and fetching
+
+features/cart: Cart logic and state
+
+features/receipt: Receipt generation
+
+core: Shared models and utils
+
+🚀 Getting Started
