@@ -1,5 +1,6 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:mini_pos_checkout/src/bloc_observer.dart';
 import 'package:mini_pos_checkout/src/cart/cart_bloc.dart';
 import 'package:mini_pos_checkout/src/cart/models/cart_line.dart';
@@ -8,11 +9,23 @@ import 'package:mini_pos_checkout/src/catalog/catalog_loader.dart';
 import 'package:mini_pos_checkout/src/catalog/item.dart';
 import 'package:mini_pos_checkout/src/receipt/receipt.dart';
 
-void main() {
+Future<void> main() async {
   Bloc.observer = const MultiBlocObserver();
 
   final catalogLoader = AssetCatalogLoader();
-  final catalogBloc = CatalogBloc(catalogLoader)..add(LoadCatalog());
+  final catalogBloc = CatalogBloc(catalogLoader);
+
+  final completer = Completer<void>();
+
+  catalogBloc.stream.listen((state) {
+    if (state is CatalogLoaded || state is CatalogError) {
+      completer.complete();
+    }
+  });
+
+  catalogBloc.add(LoadCatalog());
+
+  await completer.future;
 
   final now = DateTime.now();
   final cartState = CartState(
@@ -23,19 +36,5 @@ void main() {
   );
 
   final receipt = buildReceipt(cartState, now);
-
   print(receipt.toString());
-
-  runApp(MyApp(catalogBloc: catalogBloc));
-}
-
-class MyApp extends StatelessWidget {
-  final CatalogBloc catalogBloc;
-
-  const MyApp({super.key, required this.catalogBloc});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
 }
