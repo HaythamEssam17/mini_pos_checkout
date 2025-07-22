@@ -13,6 +13,12 @@ This project implements the core logic for a minimal Point-of-Sale (POS) system.
 
 - Include unit tests for key components
 
+✅ Versions
+- Flutter 3.29.0
+- Dart 3.7.0
+- Xcode 16.3
+
+
 ✅ Features
 📦 Product catalog with mock data
 
@@ -25,9 +31,11 @@ This project implements the core logic for a minimal Point-of-Sale (POS) system.
 ⚙️ BLoC-based state management
 
 📂 Structure
-features/catalog: Product listing and fetching
+src/catalog: Product listing and fetching
 
-features/cart: Cart logic and state
+src/cart: Cart logic and state
+
+src/receipt.dart To build a receipt 
 
 flutter pub get
 flutter test
