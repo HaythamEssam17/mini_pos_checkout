@@ -1,7 +1,7 @@
 class Item {
-  final String? id;
-  final String? name;
-  final num? price;
+  final String id;
+  final String name;
+  final num price;
 
   Item(this.id, this.name, this.price);
 
